@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>G Arts and Music Academy</title>
+  <style>
+    :root {
+      --primary:#8B5E3C;       /* dark brown */
+      --primary-light:#D9B99B; /* light beige */
+      --dark:#3C2F2F;          
+      --muted:#6B5848;         
+      --card:rgba(255,255,255,0.8);
+      --bg:linear-gradient(135deg,#F5F0E1,#EADFC4);
+      --max-width:1100px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body {
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      color: var(--dark);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(90deg,var(--primary),var(--primary-light));
+      color: white;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(6px);
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    .brand img.logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      object-fit: contain;
+      background: white;
+      padding: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: transform .3s ease;
+    }
+    .brand img.logo:hover { transform: scale(1.08); }
+
+    nav {
+      margin-left: auto;
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      transition: color .3s;
+    }
+    nav a::after {
+      content:"";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: white;
+      transition: width .3s;
+    }
+    nav a:hover::after { width: 100%; }
+    nav a:hover { color:#fff3e0; }
+
+    h1 {
+      margin: 0 0 1rem;
+      font-size: 34px;
+      font-weight: 800;
+      background: linear-gradient(90deg,var(--primary),var(--primary-light));
+      background-clip: text; 
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    p.lead { color: var(--muted); font-size: 18px; }
+
+    section {padding:3rem 0; animation: fadeInUp 1s ease both;}
+    h2 {margin-bottom:1rem;font-size:26px;font-weight:700;color:var(--dark);}
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:1.2rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      backdrop-filter: blur(10px);
+      transition: transform .3s ease, box-shadow .3s ease;
+      color: var(--dark);
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+    }
+
+    /* Carousel */
+    .carousel-wrap {
+      overflow:hidden;
+      border-radius:16px;
+      width:100%;
+      background: rgba(255, 255, 255, 0.7);
+      position: relative;
+    }
+    .carousel {
+      display:flex;
+      transition:transform 600ms ease;
+    }
+    .carousel-item {
+      min-width:100%;
+      text-align:center;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+    .carousel-item img {
+      width:100%;
+      height:400px;
+      object-fit:cover;
+      border-radius:16px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.1);
+    }
+    .carousel-item .details {
+      margin-top:12px;
+      font-weight:600;
+      color:var(--primary);
+    }
+    .carousel-controls {
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      margin-top:16px;
+    }
+    .btn {
+      background: linear-gradient(90deg,var(--primary),var(--primary-light));
+      color:white;
+      border:none;
+      padding:10px 16px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+      transition: transform .2s ease;
+    }
+    .btn:hover { transform: scale(1.05); }
+
+    .contact-iframe {
+      width:100%;height:480px;border:0;border-radius:12px;
+    }
+
+    footer {
+      padding:1.5rem;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    @media(max-width:900px){
+      .carousel-item img {height:300px;}
+    }
+    @media(max-width:700px){
+      .carousel-item img {height:220px;}
+    }
+
+    @keyframes fadeInUp {
+      0% {opacity:0; transform: translateY(40px);}
+      100% {opacity:1; transform: translateY(0);}
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;">
+    <div class="brand">
+      <img src="images/logo.png" alt="G Arts & Music Academy Logo" class="logo">
+      <div>
+        <div style="font-weight:800;font-size:18px;">G Arts & Music Academy</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#instruments">Instruments</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- HERO -->
+  <section id="home" class="hero" style="flex-direction:column;align-items:center;">
+    <h1>Learn Music, Anywhere</h1>
+    <p class="lead">Western & Carnatic styles • Individual & group sessions • Certified syllabuses • Rent/buy instruments</p>
+
+    <div class="carousel-wrap" style="margin-top:2rem;">
+      <div id="carousel" class="carousel">
+        <div class="carousel-item">
+          <img src="images/student1.png" alt="Student 1">
+
+        </div>
+        <div class="carousel-item">
+          <img src="images/student2.png" alt="Student 2">
+          
+        </div>
+        <div class="carousel-item">
+          <img src="images/student3.png" alt="Student 3">
+          
+        </div>
+        <div class="carousel-item">
+          <img src="images/student4.png" alt="Student 4">
+          
+        </div>
+        <div class="carousel-item">
+          <img src="images/student5.png" alt="Student 5">
+          
+        </div>
+        <div class="carousel-item">
+          <img src="images/student6.png" alt="Student 6">
+          
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button id="prev" class="btn">◀ Prev</button>
+        <button id="next" class="btn">Next ▶</button>
+      </div>
+    </div>
+  </section>
+
+<!-- ABOUT -->
+<section id="about" style="background: linear-gradient(135deg,#D9B99B,#8B5E3C); padding:4rem 1rem; border-radius:16px; margin:2rem 0; color:white;">
+  <div class="container">
+    <h2 style="text-align:center; margin-bottom:3rem; font-size:32px;">About Us</h2>
+
+    <!-- Welcome -->
+    <div class="card" style="background:rgba(255,255,255,0.1); padding:2rem; margin-bottom:2rem;">
+      <h3 style="margin-bottom:1rem;">Welcome to G Arts & Music Academy</h3>
+      <p>We teach both <strong>Western</strong> and <strong>Carnatic</strong> music. Our programs include private one-on-one, small group, and full group classes. Flexible durations are available for all ages and skill levels, making music learning accessible and enjoyable.</p>
+    </div>
+
+    <!-- Sessions -->
+    <div class="card" style="background:rgba(255,255,255,0.1); padding:2rem; margin-bottom:2rem;">
+      <h3 style="margin-bottom:1rem;">Our Sessions</h3>
+      <p>We offer tailored sessions for different group sizes and durations:</p>
+      <ul style="list-style:circle; padding-left:1.2rem; line-height:1.8;">
+        <li>1-1 : 45 / 30 / 20 min</li>
+        <li>2-1 : 45 min / 1 hr</li>
+        <li>3-1 : 1 hr</li>
+        <li>4-1 : 1 hr</li>
+        <li>Group classes scheduled periodically</li>
+      </ul>
+    </div>
+
+<!-- INSTRUMENTS -->
+<section id="instruments">
+  <h2>Instruments Taught</h2>
+  <div class="grid" style="grid-template-columns: repeat(2, 1fr); gap:1.2rem;">
+    <div class="card"><h3>Keyboard</h3></div>
+    <div class="card"><h3>Guitar</h3></div>
+    <div class="card"><h3>Drums & Percussion</h3></div>
+    <div class="card"><h3>Violin</h3></div>
+    <div class="card"><h3>Flute</h3></div>
+    <div class="card"><h3>Bass Guitar</h3></div>
+    <div class="card"><h3>Trumpet</h3></div>
+    <div class="card"><h3>Saxophone</h3></div>
+  </div>
+</section>
+
+    <!-- CONTACT -->
+<section id="contact">
+  <h2>Contact & Enroll</h2>
+  <div class="grid" style="grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:1.2rem;">
+    
+    <div class="card" style="text-align:center; padding:2rem;">
+      <h3>Quick Enquiry Form</h3>
+      <p>Click the button below to open the form and enroll:</p>
+      <a href="https://forms.cloud.microsoft/r/R19QmCAEp8" target="_blank" class="btn" style="margin-top:1rem; display:inline-block;">Open Enquiry Form</a>
+    </div>
+
+    <div class="card" style="text-align:center; padding:2rem;">
+      <h3>Call / WhatsApp</h3>
+      <p>+91 98942 15361<br>
+         +91 73971 69729<br>
+         +91 99445 26198<br>
+         +91 81223 00394</p>
+      <h3>Branches</h3>
+      <p>Sulur • Chinniyampalayam • Singanallur • Peelamedu</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+    <!-- Syllabuses -->
+    <div class="card" style="background:rgba(255,255,255,0.1); padding:2rem;">
+      <h3 style="margin-bottom:1rem;">Our Syllabuses</h3>
+      <p>We follow recognized syllabuses for a structured learning path:</p>
+      <p><strong>Trinity • ABRSM • RCM • TN Music • Ear Pro</strong></p>
+    </div>
+
+  </div>
+</section>
+
+
+</main>
+
+<footer>
+  © G Arts & Music Academy — All rights reserved.
+</footer>
+
+<script>
+  // Smooth Carousel
+  (function(){
+    const carousel=document.getElementById('carousel');
+    const total=carousel.children.length;
+    let idx=0;
+    function go(i){
+      idx=(i+total)%total;
+      carousel.style.transform=`translateX(${-idx*100}%)`;
+    }
+    function next(){go(idx+1);}
+    function prev(){go(idx-1);}
+    document.getElementById('next').addEventListener('click',()=>next());
+    document.getElementById('prev').addEventListener('click',()=>prev());
+    setInterval(next,4000);
+  })();
+</script>
+
+</body>
+</html>
